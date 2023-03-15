@@ -41,9 +41,11 @@ public:
         pushButton_3 = new QPushButton(Widget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
         pushButton_3->setGeometry(QRect(270, 280, 121, 41));
+        pushButton_3->setAutoDefault(true);
         pushButton_4 = new QPushButton(Widget);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
         pushButton_4->setGeometry(QRect(20, 280, 121, 41));
+        pushButton_4->setAutoDefault(false);
         label = new QLabel(Widget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(180, 20, 51, 31));
