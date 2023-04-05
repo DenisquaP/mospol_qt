@@ -8,6 +8,9 @@ class QLabel;
 class QLineEdit;
 
 class QPushButton;
+namespace Ui {
+    class MainWindow;
+}
 
 class LoginForm : public QDialog
 {
@@ -17,6 +20,8 @@ class LoginForm : public QDialog
 
         explicit LoginForm(QWidget *parent = 0);//объявление конструктора, для которого невозможно неявное преобразование типов при инициализации. В конструкторе указывается родительский виджет. По умолчанию он равен 0, это значит что у данного виджета нет родителя
 
+    public slots:
+        void set_vision();
 
     private:
         QLabel *name_label;
@@ -29,5 +34,6 @@ class LoginForm : public QDialog
 
         QPushButton *reg_button;
         QPushButton *close_button;
+        Ui::MainWindow *ui;
 };
 #endif // LOGINFORM_H

@@ -4,11 +4,11 @@
 LoginForm::LoginForm(QWidget *parent)
     : QDialog(parent)
 {
-    QRegularExpression name_reg("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
-    QValidator *name_validator = new QRegularExpressionValidator(name_reg, this);
-
-    QRegularExpression email_reg("[A-Z][a-z]+");
+    QRegularExpression email_reg("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
     QValidator *email_validator = new QRegularExpressionValidator(email_reg, this);
+
+    QRegularExpression name_reg("[A-Z][a-z]+");
+    QValidator *name_validator = new QRegularExpressionValidator(name_reg, this);
 
     QRegularExpression passw_reg(".{1,6}");
     QValidator *passw_validator = new QRegularExpressionValidator(passw_reg, this);
@@ -37,6 +37,7 @@ LoginForm::LoginForm(QWidget *parent)
 
     close_button = new QPushButton(tr("Close"));
     connect(close_button, SIGNAL(clicked()), this, SLOT(close()));
+    connect(reg_button, SIGNAL(clicked()), this, SLOT(close())); // тут закончил, нужно как-то активировать кнопку
 
     QVBoxLayout *leftLayout = new QVBoxLayout;
     leftLayout->addWidget(name_label);
@@ -50,13 +51,19 @@ LoginForm::LoginForm(QWidget *parent)
     rightLayout->addWidget(name_lineEdit);
     rightLayout->addWidget(email_lineEdit);
     rightLayout->addWidget(passw_lineEdit);
-    rightLayout->addWidget(close_button);
+    rightLayout->addWidget(reg_button);
 
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
     mainLayout->addLayout(leftLayout);
     mainLayout->addLayout(rightLayout);
     setLayout(mainLayout);
+}
+
+void LoginForm::set_vision(){
+    if(!name_lineEdit->text().isEmpty() && !email_lineEdit->text().isEmpty() && !passw_lineEdit->text().isEmpty()){
+        reg_button->setEnabled(true);
+    }
 }
 
 
