@@ -8,9 +8,6 @@ class QLabel;
 class QLineEdit;
 
 class QPushButton;
-namespace Ui {
-    class MainWindow;
-}
 
 class LoginForm : public QDialog
 {
@@ -34,6 +31,5 @@ class LoginForm : public QDialog
 
         QPushButton *reg_button;
         QPushButton *close_button;
-        Ui::MainWindow *ui;
 };
 #endif // LOGINFORM_H

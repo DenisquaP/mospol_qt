@@ -36,15 +36,17 @@ LoginForm::LoginForm(QWidget *parent)
     reg_button->setEnabled(false);
 
     close_button = new QPushButton(tr("Close"));
-    connect(close_button, SIGNAL(clicked()), this, SLOT(close()));
-    connect(reg_button, SIGNAL(clicked()), this, SLOT(close())); // тут закончил, нужно как-то активировать кнопку
+    connect(close_button, SIGNAL(clicked()), this, SLOT(reject()));
+    connect(name_lineEdit, &QLineEdit::textChanged, this, &LoginForm::set_vision);
+    connect(email_lineEdit, &QLineEdit::textChanged, this, &LoginForm::set_vision);
+    connect(passw_lineEdit, &QLineEdit::textChanged, this, &LoginForm::set_vision);
+    connect(reg_button, SIGNAL(clicked()), this, SLOT(accept())); // тут закончил, нужно как-то активировать кнопку
 
     QVBoxLayout *leftLayout = new QVBoxLayout;
     leftLayout->addWidget(name_label);
     leftLayout->addWidget(email_label);
     leftLayout->addWidget(passw_label);
     leftLayout->addWidget(close_button);
-
 
 
     QVBoxLayout *rightLayout = new QVBoxLayout;//менеджер вертикальной компоновки
