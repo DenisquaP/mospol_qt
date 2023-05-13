@@ -7,14 +7,14 @@ LoginForm::LoginForm(QWidget *parent)
     QRegularExpression email_reg("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
     QValidator *email_validator = new QRegularExpressionValidator(email_reg, this);
 
-    QRegularExpression name_reg("[A-Z][a-z]+");
+    QRegularExpression name_reg("[А-Я][а-я]+");
     QValidator *name_validator = new QRegularExpressionValidator(name_reg, this);
 
     QRegularExpression passw_reg(".{1,6}");
     QValidator *passw_validator = new QRegularExpressionValidator(passw_reg, this);
 
 
-    name_label = new QLabel(tr("Name"));
+    name_label = new QLabel(tr("Имя"));
     name_lineEdit = new QLineEdit;
     name_lineEdit->setValidator(name_validator);
     name_label->setBuddy(name_lineEdit);
@@ -24,18 +24,18 @@ LoginForm::LoginForm(QWidget *parent)
     email_lineEdit->setValidator(email_validator);
     email_label->setBuddy(email_lineEdit);
 
-    passw_label = new QLabel(tr("Password"));
+    passw_label = new QLabel(tr("Пароль"));
     passw_lineEdit = new QLineEdit;
     passw_lineEdit->setValidator(passw_validator);
     passw_label->setBuddy(passw_lineEdit);
 
 
 
-    reg_button = new QPushButton(tr("Register"));
+    reg_button = new QPushButton(tr("Регистрация"));
     reg_button->setDefault(true);
     reg_button->setEnabled(false);
 
-    close_button = new QPushButton(tr("Close"));
+    close_button = new QPushButton(tr("Закрыть"));
     connect(close_button, SIGNAL(clicked()), this, SLOT(reject()));
     connect(name_lineEdit, &QLineEdit::textChanged, this, &LoginForm::set_vision);
     connect(email_lineEdit, &QLineEdit::textChanged, this, &LoginForm::set_vision);

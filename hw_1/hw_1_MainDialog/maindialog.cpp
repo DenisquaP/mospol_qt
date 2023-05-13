@@ -4,22 +4,22 @@
 MainDialog::MainDialog(QWidget *parent)
     : QDialog(parent)
 {
-    constant = new QLabel(tr("Constant"));
+    constant = new QLabel(tr("Константа"));
     const_lineEdit = new QLineEdit;
     constant->setBuddy(const_lineEdit);
 
-    formula = new QLabel(tr("Email"));
+    formula = new QLabel(tr("Формула"));
     formula_lineEdit = new QLineEdit;
     formula->setBuddy(formula_lineEdit);
 
-    numerical_value = new QLabel(tr("Email"));
+    numerical_value = new QLabel(tr("Числовое значение"));
     nv_lineEdit = new QLineEdit;
     numerical_value->setBuddy(nv_lineEdit);
 
-    add_btn = new QPushButton(tr("Add"));
+    add_btn = new QPushButton(tr("Добавить"));
     add_btn->setDefault(true);
 
-    clear_btn = new QPushButton(tr("Clear"));
+    clear_btn = new QPushButton(tr("Очистить"));
 
     connect(clear_btn, &QPushButton::clicked, this, [=](){
         const_lineEdit->clear();
